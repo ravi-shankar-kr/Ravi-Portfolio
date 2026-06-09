@@ -1,49 +1,752 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>My Portfolio</title>
-    <link rel="stylesheet" href="style.css">
+<!doctype html>
+<html lang="en" class="dark" id="htmlRoot">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Ravi Shankar Kumar – Full Stack Developer</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Geist:wght@300;400;500;600;700;800;900&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"
+    />
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            fontFamily: { geist: ["Geist", "sans-serif"] },
+            colors: {
+              bg: "#0d0f17",
+              bg2: "#13161f",
+              card: "#161a26",
+              border: "#1e2235",
+              txtmain: "#e8eaf0",
+              muted: "#6b7280",
+              accent: "#7c6af7",
+              accent2: "#a78bfa",
+              green: "#22c55e",
+              red: "#ef4444",
+              /* light overrides handled via Tailwind classes */
+            },
+            borderRadius: { DEFAULT: "12px" },
+          },
+        },
+      };
+    </script>
+    <style>
+      html {
+        scroll-behavior: smooth;
+      }
+      body {
+        font-family: "Geist", sans-serif;
+      }
+      /* Light mode overrides via CSS variables for dynamic theming */
+      html.light body {
+        background: #f4f5f9;
+        color: #111827;
+      }
+      html.light .th-bg {
+        background-color: #f4f5f9 !important;
+      }
+      html.light .th-bg2 {
+        background-color: #ffffff !important;
+      }
+      html.light .th-card {
+        background-color: #ffffff !important;
+      }
+      html.light .th-border {
+        border-color: #e2e5ee !important;
+      }
+      html.light .th-text {
+        color: #111827 !important;
+      }
+    </style>
+  </head>
+  <body
+    class="bg-bg text-txtmain min-h-screen font-geist transition-colors duration-300"
+  >
+    <!-- NAV -->
+    <nav
+      class="fixed top-0 left-0 right-0 z-[100] flex items-center justify-between px-8 py-4 bg-transparent"
+    >
+      <div></div>
+      <div class="flex items-center gap-2.5">
+        <a
+          class="flex items-center gap-1.5 px-[18px] py-2 rounded-[10px] border border-border bg-card text-txtmain font-semibold text-sm no-underline hover:bg-border transition-colors"
+          href="resume.pdf"
+          download="Ravi_Shankar_kr_Resume.pdf"
+        >
+          Resume <i class="fa fa-download text-xs"></i>
+        </a>
+        <!-- <button
+          id="themeToggle"
+          class="w-[38px] h-[38px] rounded-[10px] border border-border bg-card text-txtmain cursor-pointer text-base flex items-center justify-center hover:bg-border transition-colors"
+          title="Toggle theme"
+        >
+          🌙
+        </button> -->
+      </div>
+    </nav>
+
+    <!-- HERO -->
+    <section id="hero" class="max-w-[950px] mx-auto px-6 pt-[60px] pb-[60px]">
+      <div
+        class="border border-border rounded-[12px] p-8 flex gap-7 items-center mb-10"
+      >
+        <div
+          class="w-[190px] h-[230px] rounded-[10px] bg-border flex items-center justify-center text-4xl flex-shrink-0"
+        >
+          <img
+            src="/profile.png"
+            alt=""
+            class="w-full h-full rounded-[10px] object-cover object-center"
+          />
+        </div>
+        <div>
+          <div class="text-[3.5rem] font-extrabold leading-[1.1] mb-3">
+            Ravi Shankar Kumar
+          </div>
+          <div class="text-2xl text-muted mb-2">MERN Stack Developer</div>
+          <div class="flex flex-col gap-1">
+            <span class="text-lg text-muted flex items-center gap-1.5">
+              <i class="fa fa-envelope text-xs"></i> ravi896959@gmail.com
+            </span>
+            <span class="text-sm text-muted flex items-center gap-1.5">
+              <i class="fa fa-location-dot text-xs"></i> New Delhi, India
+            </span>
+          </div>
+        </div>
+      </div>
+
+      <div class="flex items-center gap-2 text-2xl font-semibold mb-3">
+        <i class="fa fa-user text-muted"></i> About Me
+      </div>
+      <p class="text-muted leading-[1.5] text-[1.2rem]">
+        I'm Ravi Shankar Kumar, a software engineer who loves building web
+        applications using both frontend and backend technologies. Currently, I
+        focus on creating innovative GenAI products to solve real-world problems
+        and enhance user experiences.
+      </p>
+      <div class="flex gap-3 mt-5">
+        <a
+          href="#projects"
+          class="px-[22px] py-2.5 rounded-[10px] bg-accent2 text-white border-0 font-semibold text-sm cursor-pointer no-underline hover:opacity-85 transition-opacity"
+        >
+          View Projects
+        </a>
+        <a
+          href="#contact"
+          class="px-[22px] py-2.5 rounded-[10px] bg-transparent text-txtmain border border-border font-semibold text-sm cursor-pointer no-underline hover:bg-card transition-colors"
+        >
+          Contact Me
+        </a>
+      </div>
+    </section>
+
+    <!-- EXPERIENCE -->
+    <section
+      id="experience"
+      class="max-w-[950px] mx-auto px-6 pt-[100px] pb-[60px]"
+    >
+      <div class="text-[3.1rem] font-semibold text-accent2 mb-2 text-center">
+        Work Experience
+      </div>
+      <p class="text-muted text-[1.4rem] mb-12 text-center">
+        Building solutions across startups and growing companies
+      </p>
+
+
+        <!-- Training -->
+      <div class="bg-card border border-border rounded-[12px] p-6 mb-5">
+        <div class="flex justify-between items-start mb-2">
+          <div class="flex items-center gap-3">
+            <div
+              class="w-10 h-10 rounded-full bg-[#1a1f35] text-accent2 flex items-center justify-center text-xs font-bold flex-shrink-0"
+            >
+              S
+            </div>
+            <div>
+              <div class="text-base font-bold">Sheryians Coding School </div>
+            </div>
+          </div>
+          <div class="text-sm text-muted whitespace-nowrap">Jan 2026 - Present</div>
+        </div>
+        <div class="text-[0.95rem] font-semibold text-accent2 mb-1">
+          MERN Stack Developer - Trainee
+        </div>
+        <div class="text-sm text-muted mb-3 flex items-center gap-1.5">
+          <i class="fa fa-location-dot"></i> On-site, Bhopal
+        </div>
+        <ul class="list-disc pl-5">
+           <li class="text-[1.1rem] text-muted leading-[1.7] mb-2">
+            Developed and deployed scalable full-stack web applications using React.js, Redux Toolkit, TanStack Query, Node.js, Express.js, MongoDB, and Mongoose, delivering responsive user interfaces and high-performance backend services.
+          </li>
+          <li class="text-[1.1rem] text-muted leading-[1.7] mb-2">
+            Built reusable React components, implemented client-side routing with React Router, and managed complex application state using Redux Toolkit and TanStack Query for efficient data fetching, caching, and synchronization.
+          </li>
+          <li class="text-[1.1rem] text-muted leading-[1.7] mb-2">
+            Designed and developed secure RESTful APIs using Node.js and Express.js, optimizing database operations with MongoDB indexing and query optimization techniques to improve application performance.
+          </li>
+          <li class="text-[1.1rem] text-muted leading-[1.7] mb-2">
+            Architected backend applications using a modular structure with separate routes, controllers, services, repositories, models, and validation layers, ensuring scalability, maintainability, and clean code practices.
+          </li>
+          <li class="text-[1.1rem] text-muted leading-[1.7] mb-2">
+            Implemented authentication and authorization using JWT, HTTP-only cookies, Bcrypt password hashing, and role-based access control (RBAC) to secure protected resources and user data.
+          </li>
+          <li class="text-[1.1rem] text-muted leading-[1.7] mb-2">
+            Developed robust validation systems using Zod and integrated React Hook Form to handle client-side and server-side validation, reducing invalid requests and improving user experience.
+          </li>
+          <li class="text-[1.1rem] text-muted leading-[1.7] mb-2">
+            Containerized applications using Docker for consistent development and production environments, simplifying deployment workflows and application portability.
+          </li>
+          <li class="text-[1.1rem] text-muted leading-[1.7] mb-2">
+            Deployed and managed full-stack applications on AWS (EC2, S3, IAM), configured production environments, handled server setup, and utilized Git/GitHub for version control and collaborative development.
+          </li>
+        </ul>
+        <div class="flex gap-4 flex-wrap">
+          <button class="bg-[#10141B] py-1 px-3 rounded-full text-sm">React.js</button>
+          <button class="bg-[#10141B] py-1 px-3 rounded-full text-sm">JavaScript</button>
+          <button class="bg-[#10141B] py-1 px-3 rounded-full text-sm">Tailwind CSS</button>
+          <button class="bg-[#10141B] py-1 px-3 rounded-full text-sm">Redux</button>
+          <button class="bg-[#10141B] py-1 px-3 rounded-full text-sm">TanStack Query</button>
+          <button class="bg-[#10141B] py-1 px-3 rounded-full text-sm">Node.js</button>
+          <button class="bg-[#10141B] py-1 px-3 rounded-full text-sm">Ecpress.js</button>
+          <button class="bg-[#10141B] py-1 px-3 rounded-full text-sm">MongoDB</button>
+          <button class="bg-[#10141B] py-1 px-3 rounded-full text-sm">Mongoose</button>
+          <button class="bg-[#10141B] py-1 px-3 rounded-full text-sm">Rest APIs</button>
+          <button class="bg-[#10141B] py-1 px-3 rounded-full text-sm">JWT Authentication</button>
+          <button class="bg-[#10141B] py-1 px-3 rounded-full text-sm">Git, GitHub</button>
+          <button class="bg-[#10141B] py-1 px-3 rounded-full text-sm">MongoDB Atlas</button>
+          <button class="bg-[#10141B] py-1 px-3 rounded-full text-sm">Docker</button>
+          <button class="bg-[#10141B] py-1 px-3 rounded-full text-sm">AWS</button>
+        </div>
+      </div>
+
+      <!-- Marcglen Pharmaceutical Pvt. Ltd. -->
+      <div class="bg-card border border-border rounded-[12px] p-6 mb-5">
+        <div class="flex justify-between items-start mb-2">
+          <div class="flex items-center gap-3">
+            <div
+              class="w-10 h-10 rounded-full bg-border flex items-center justify-center text-xs font-bold flex-shrink-0"
+            >
+              P
+            </div>
+            <div>
+              <div class="text-base font-bold">
+                Marcglen Pharmaceutical Pvt. Ltd.
+                <a
+                  href="https://marcglenpharmaceutical.com/"
+                  class="text-muted ml-1"
+                  ><i class="fa fa-arrow-up-right-from-square text-[0.7rem]"></i
+                ></a>
+              </div>
+            </div>
+          </div>
+          <div class="text-sm text-muted whitespace-nowrap">
+            June 2025 – July-2025
+          </div>
+        </div>
+        <div class="text-[0.95rem] font-semibold text-accent2 mb-1">
+          Frontend Developer
+        </div>
+        <div class="text-sm text-muted mb-3 flex items-center gap-1.5">
+          <i class="fa fa-location-dot"></i> Remote, India
+        </div>
+        <ul class="list-disc pl-5">
+          <li class="text-[1.1rem] text-muted leading-[1.7] mb-1">
+            Developed responsive frontend interfaces using React, JavaScript,
+            and Tailwind CSS.
+          </li>
+          <li class="text-[1.1rem] text-muted leading-[1.7] mb-1">
+            Implemented dynamic forms, routing, and email automation features
+            using EmailJS.
+          </li>
+          <li class="text-[1.1rem] text-muted leading-[1.7] mb-1">
+            Collaborated with the team on UI improvements, component
+            reusability, and performance optimization.
+          </li>
+          <li class="text-[1.1rem] text-muted leading-[1.7] mb-2">
+            Deployed on Hostinger for scalable and reliable production hosting.
+          </li>
+        </ul>
+        <div class="flex gap-4">
+          <button class="bg-[#10141B] py-1 px-3 rounded-full text-sm">React.js</button>
+          <button class="bg-[#10141B] py-1 px-3 rounded-full text-sm">JavaScript</button>
+          <button class="bg-[#10141B] py-1 px-3 rounded-full text-sm">Tailwind CSS</button>
+          <button class="bg-[#10141B] py-1 px-3 rounded-full text-sm">EmailJS</button>
+        </div>
+      </div>
+
     
-</head>
-<body>
-    <header>
-        My Portfolio
-    </header>
-    <div class="container">
-        <h2>About Me</h2>
-        <p>Hi, I'm Ravi Shankar Kumar. A passionate developer.</p>
+    </section>
 
-        <h2>Skills</h2>
-        <p>HTML, CSS, JavaScript, React, Python</p>
+    <!-- PROJECTS -->
+    <section
+      id="projects"
+      class="max-w-[960px] mx-auto px-6 pt-[100px] pb-[60px] text-center"
+    >
+      <div class="text-[3.1rem] font-semibold text-accent2 mb-2 text-center">
+        Featured Projects
+      </div>
+      <p class="text-muted text-[1.4rem] mb-9 text-center">
+        A selection of my recent work and side projects
+      </p>
 
-        <h2>Projects</h2>
-        <div class="projects ">
-            <div class="project">
-                <h3>Project 1</h3>
-                <p> Build an Ecommerce Website for there usage.</p>
+      <div class="grid grid-cols-2 gap-5 text-left max-sm:grid-cols-1">
+        <!-- Phirse Travel -->
+        <div
+          class="bg-card border border-border rounded-[12px] overflow-hidden hover:border-accent hover:-translate-y-[3px] transition-all duration-200"
+        >
+          <div
+            class="w-full h-[200px] bg-[#f5e6d3] flex items-center justify-center text-5xl"
+          >
+            <img src="/PhirseTravel.png" class="w-full h-full rounded-[10px] object-cover object-center" alt="">
+          </div>
+          <div class="p-[18px]">
+            <div class="text-base font-bold mb-1.5">
+              Phirse Travel
             </div>
-            <div class="project">
-                <h3>Project 2</h3>
-                <p>Buit portfolio website</p>
+            <div class="text-[0.85rem] text-muted leading-[1.6] mb-3.5">
+              Provides a centralized platform for discovering, booking, and managing travel packages, trekking expeditions, and camping experiences, with comprehensive booking and administration capabilities.
             </div>
+            <div class="flex flex-wrap gap-1.5 mb-3.5">
+              <span
+                class="text-[0.75rem] px-2.5 py-[3px] rounded-[6px] border border-border text-muted"
+                >Node.js</span
+              >
+              <span
+                class="text-[0.75rem] px-2.5 py-[3px] rounded-[6px] border border-border text-muted"
+                >Express.js</span
+              >
+              <span
+                class="text-[0.75rem] px-2.5 py-[3px] rounded-[6px] border border-border text-muted"
+                >MongoDB</span
+              >
+               <span
+                class="text-[0.75rem] px-2.5 py-[3px] rounded-[6px] border border-border text-muted"
+                >React.js</span
+              >
+               <span
+                class="text-[0.75rem] px-2.5 py-[3px] rounded-[6px] border border-border text-muted"
+                >Redux</span
+              >
+            </div>
+            
+            <div class="flex gap-2.5">
+              <a
+                href="https://github.com/ravi-shankar-kr/Phirse-travel-clint-and-server"
+                class="text-[0.8rem] px-3.5 py-1.5 rounded-[8px] border border-border text-txtmain no-underline flex items-center gap-1.5 hover:bg-border transition-colors"
+                ><i class="fab fa-github"></i> GitHub</a
+              >
+              <a
+                href="#"
+                class="text-[0.8rem] px-3.5 py-1.5 rounded-[8px] border border-border text-txtmain no-underline flex items-center gap-1.5 hover:bg-border transition-colors"
+                ><i class="fa fa-arrow-up-right-from-square"></i> Live</a
+              >
+            </div>
+          </div>
         </div>
 
-        <h2>My Resume</h2>
-        <iframe src="Ravi Resume.pdf" style="width: 100%;height: 100%;border: none;"></iframe>
+        <!-- Real-Time-Device-track -->
+        <div
+          class="bg-card border border-border rounded-[12px] overflow-hidden hover:border-accent hover:-translate-y-[3px] transition-all duration-200"
+        >
+          <div
+            class="w-full h-[200px] bg-[#0a0e1a] flex items-center justify-center text-5xl"
+          >
+             <img src="/RealTime.png" class="w-full h-full rounded-[10px] object-cover object-center" alt="">
+          </div>
+          <div class="p-[18px]">
+            <div class="text-base font-bold mb-1.5">Real-Time-Device-track</div>
+            <div class="text-[0.85rem] text-muted leading-[1.6] mb-3.5">
+              Provides real-time location tracking and monitoring of connected devices, enabling users to view live device positions, movement history, and status updates through an interactive dashboard.
+            </div>
+            <div class="flex flex-wrap gap-1.5 mb-3.5">
+              <span
+                class="text-[0.75rem] px-2.5 py-[3px] rounded-[6px] border border-border text-muted"
+                >Node.js</span
+              >
+              <span
+                class="text-[0.75rem] px-2.5 py-[3px] rounded-[6px] border border-border text-muted"
+                >Express.js</span
+              >
+              <span
+                class="text-[0.75rem] px-2.5 py-[3px] rounded-[6px] border border-border text-muted"
+                >MongoDB</span
+              >
+            </div>
+            <div class="flex gap-2.5">
+              <a
+                href="https://github.com/ravi-shankar-kr/Real-Time-Device-Tracking-App"
+                class="text-[0.8rem] px-3.5 py-1.5 rounded-[8px] border border-border text-txtmain no-underline flex items-center gap-1.5 hover:bg-border transition-colors"
+                ><i class="fab fa-github"></i> GitHub</a
+              >
+              <a
+                href="#"
+                class="text-[0.8rem] px-3.5 py-1.5 rounded-[8px] border border-border text-txtmain no-underline flex items-center gap-1.5 hover:bg-border transition-colors"
+                ><i class="fa fa-arrow-up-right-from-square"></i> Live</a
+              >
+            </div>
+          </div>
+        </div>
 
-        <h2>Contact Me</h2>
-        <form class="contact-form">
-            <input type="text" placeholder="Name" required>
-            <input type="email" placeholder="Email" required>
-            <textarea placeholder="Message" required></textarea>
-            <button type="submit" class="btn">Send</button>
-        </form><br>
-        
-        
-        <button class="btn" onclick="changeBackgroundColor()">Change Background</button>
+        <!-- AI Chat App -->
+        <!-- <div
+          class="bg-card border border-border rounded-[12px] overflow-hidden hover:border-accent hover:-translate-y-[3px] transition-all duration-200"
+        >
+          <div
+            class="w-full h-[200px] bg-[#0f172a] flex items-center justify-center text-5xl"
+          >
+            💬
+          </div>
+          <div class="p-[18px]">
+            <div class="text-base font-bold mb-1.5">AI Chat App</div>
+            <div class="text-[0.85rem] text-muted leading-[1.6] mb-3.5">
+              A real-time AI powered chat application with conversation history,
+              multi-model support, and a clean modern interface.
+            </div>
+            <div class="flex flex-wrap gap-1.5 mb-3.5">
+              <span
+                class="text-[0.75rem] px-2.5 py-[3px] rounded-[6px] border border-border text-muted"
+                >React</span
+              >
+              <span
+                class="text-[0.75rem] px-2.5 py-[3px] rounded-[6px] border border-border text-muted"
+                >Express</span
+              >
+              <span
+                class="text-[0.75rem] px-2.5 py-[3px] rounded-[6px] border border-border text-muted"
+                >OpenAI</span
+              >
+            </div>
+            <div class="flex gap-2.5">
+              <a
+                href="#"
+                class="text-[0.8rem] px-3.5 py-1.5 rounded-[8px] border border-border text-txtmain no-underline flex items-center gap-1.5 hover:bg-border transition-colors"
+                ><i class="fab fa-github"></i> GitHub</a
+              >
+              <a
+                href="#"
+                class="text-[0.8rem] px-3.5 py-1.5 rounded-[8px] border border-border text-txtmain no-underline flex items-center gap-1.5 hover:bg-border transition-colors"
+                ><i class="fa fa-arrow-up-right-from-square"></i> Live</a
+              >
+            </div>
+          </div>
+        </div> -->
+
+        <!-- E-Commerce -->
+        <!-- <div
+          class="bg-card border border-border rounded-[12px] overflow-hidden hover:border-accent hover:-translate-y-[3px] transition-all duration-200"
+        >
+          <div
+            class="w-full h-[200px] bg-[#0e1b12] flex items-center justify-center text-5xl"
+          >
+            🛒
+          </div>
+          <div class="p-[18px]">
+            <div class="text-base font-bold mb-1.5">E-Commerce Platform</div>
+            <div class="text-[0.85rem] text-muted leading-[1.6] mb-3.5">
+              Full-stack e-commerce solution with product management, cart,
+              payments via Razorpay, and admin dashboard.
+            </div>
+            <div class="flex flex-wrap gap-1.5 mb-3.5">
+              <span
+                class="text-[0.75rem] px-2.5 py-[3px] rounded-[6px] border border-border text-muted"
+                >Next.js</span
+              >
+              <span
+                class="text-[0.75rem] px-2.5 py-[3px] rounded-[6px] border border-border text-muted"
+                >PostgreSQL</span
+              >
+              <span
+                class="text-[0.75rem] px-2.5 py-[3px] rounded-[6px] border border-border text-muted"
+                >Prisma</span
+              >
+            </div>
+            <div class="flex gap-2.5">
+              <a
+                href="#"
+                class="text-[0.8rem] px-3.5 py-1.5 rounded-[8px] border border-border text-txtmain no-underline flex items-center gap-1.5 hover:bg-border transition-colors"
+                ><i class="fab fa-github"></i> GitHub</a
+              >
+              <a
+                href="#"
+                class="text-[0.8rem] px-3.5 py-1.5 rounded-[8px] border border-border text-txtmain no-underline flex items-center gap-1.5 hover:bg-border transition-colors"
+                ><i class="fa fa-arrow-up-right-from-square"></i> Live</a
+              >
+            </div>
+          </div>
+        </div> -->
+      </div>
+    </section>
+
+    <!-- SKILLS -->
+    <section
+      id="skills"
+      class="max-w-[900px] mx-auto px-6 pt-[100px] pb-[60px]"
+    >
+      <div class="text-[2.2rem] font-extrabold text-accent2 mb-2">Skills</div>
+      <p class="text-muted text-[0.95rem] mb-9">
+        Here are some of the skills I have acquired over the years of my journey
+        in the tech industry. I am always looking to learn more and improve my
+        skillset.
+      </p>
+
+      <!-- skill rows -->
+      <div class="flex items-start gap-5 mb-[18px]">
+        <span class="text-sm font-semibold text-txtmain min-w-[120px] pt-1"
+          >1. Languages</span
+        >
+        <div class="flex flex-wrap gap-2">
+          <span
+            class="px-3.5 py-[5px] rounded-[8px] border border-border bg-card text-[0.85rem] text-txtmain"
+            >JavaScript</span
+          >
+          <span
+            class="px-3.5 py-[5px] rounded-[8px] border border-border bg-card text-[0.85rem] text-txtmain"
+            >TypeScript</span
+          >
+          <span
+            class="px-3.5 py-[5px] rounded-[8px] border border-border bg-card text-[0.85rem] text-txtmain"
+            >Java</span
+          >
+        </div>
+      </div>
+      <div class="flex items-start gap-5 mb-[18px]">
+        <span class="text-sm font-semibold text-txtmain min-w-[120px] pt-1"
+          >2. Frontend</span
+        >
+        <div class="flex flex-wrap gap-2">
+          <span
+            class="px-3.5 py-[5px] rounded-[8px] border border-border bg-card text-[0.85rem] text-txtmain"
+            >React</span
+          >
+          <span
+            class="px-3.5 py-[5px] rounded-[8px] border border-border bg-card text-[0.85rem] text-txtmain"
+            >Next.js</span
+          >
+          <span
+            class="px-3.5 py-[5px] rounded-[8px] border border-border bg-card text-[0.85rem] text-txtmain"
+            >Tailwind CSS</span
+          >
+          <span
+            class="px-3.5 py-[5px] rounded-[8px] border border-border bg-card text-[0.85rem] text-txtmain"
+            >Shadcn</span
+          >
+          <span
+            class="px-3.5 py-[5px] rounded-[8px] border border-border bg-card text-[0.85rem] text-txtmain"
+            >Tanstack Query</span
+          >
+        </div>
+      </div>
+      <div class="flex items-start gap-5 mb-[18px]">
+        <span class="text-sm font-semibold text-txtmain min-w-[120px] pt-1"
+          >3. Backend</span
+        >
+        <div class="flex flex-wrap gap-2">
+          <span
+            class="px-3.5 py-[5px] rounded-[8px] border border-border bg-card text-[0.85rem] text-txtmain"
+            >Express.js</span
+          >
+          <span
+            class="px-3.5 py-[5px] rounded-[8px] border border-border bg-card text-[0.85rem] text-txtmain"
+            >Node.js</span
+          >
+        </div>
+      </div>
+      <div class="flex items-start gap-5 mb-[18px]">
+        <span class="text-sm font-semibold text-txtmain min-w-[120px] pt-1"
+          >4. Databases</span
+        >
+        <div class="flex flex-wrap gap-2">
+          <span
+            class="px-3.5 py-[5px] rounded-[8px] border border-border bg-card text-[0.85rem] text-txtmain"
+            >MongoDB</span
+          >
+          <span
+            class="px-3.5 py-[5px] rounded-[8px] border border-border bg-card text-[0.85rem] text-txtmain"
+            >PostgreSQL</span
+          >
+        </div>
+      </div>
+      <div class="flex items-start gap-5 mb-[18px]">
+        <span class="text-sm font-semibold text-txtmain min-w-[120px] pt-1"
+          >5. DevOps &amp; Cloud</span
+        >
+        <div class="flex flex-wrap gap-2">
+          <span
+            class="px-3.5 py-[5px] rounded-[8px] border border-border bg-card text-[0.85rem] text-txtmain"
+            >Docker</span
+          >
+          <span
+            class="px-3.5 py-[5px] rounded-[8px] border border-border bg-card text-[0.85rem] text-txtmain"
+            >AWS</span
+          >
+        </div>
+      </div>
+      <div class="flex items-start gap-5 mb-[18px]">
+        <span class="text-sm font-semibold text-txtmain min-w-[120px] pt-1"
+          >6. Others</span
+        >
+        <div class="flex flex-wrap gap-2">
+          <span
+            class="px-3.5 py-[5px] rounded-[8px] border border-border bg-card text-[0.85rem] text-txtmain"
+            >Git</span
+          >
+          <span
+            class="px-3.5 py-[5px] rounded-[8px] border border-border bg-card text-[0.85rem] text-txtmain"
+            >REST</span
+          >
+          <span
+            class="px-3.5 py-[5px] rounded-[8px] border border-border bg-card text-[0.85rem] text-txtmain"
+            >Prisma</span
+          >
+          <span
+            class="px-3.5 py-[5px] rounded-[8px] border border-border bg-card text-[0.85rem] text-txtmain"
+            >Payment Gateways</span
+          >
+        </div>
+      </div>
+    </section>
+
+    <!-- CONTACT -->
+    <section
+      id="contact"
+      class="max-w-[900px] mx-auto px-6 pt-[100px] pb-[60px] text-center"
+    >
+      <div
+        class="bg-card border border-border rounded-[12px] px-6 py-10 inline-flex flex-col items-center gap-3 mb-10 w-full"
+      >
+        <div class="flex items-center gap-3 mb-2">
+          <div
+            class="w-12 h-12 rounded-full bg-border flex items-center justify-center text-[1.3rem]"
+          >
+            👤
+          </div>
+          <div>
+            <div class="font-bold text-base">Ravi Shankar Kumar</div>
+            <div class="text-sm text-muted">@adarshsingh9540</div>
+          </div>
+        </div>
+        <p class="text-muted text-[0.95rem] max-w-[480px] leading-[1.6]">
+          You can schedule a call with me to discuss anything you'd like. I'm
+          always open to new ideas and opportunities.
+        </p>
+        <a
+          href="https://cal.com/adarshsingh9540"
+          target="_blank"
+          class="inline-flex items-center gap-2 px-7 py-3 rounded-[10px] bg-[#166534] text-white border-0 font-semibold text-[0.95rem] cursor-pointer no-underline mt-2 hover:bg-[#14532d] transition-colors"
+        >
+          <i class="fa fa-calendar-days"></i> Cal.com
+        </a>
+      </div>
+
+      <div class="text-[1.8rem] font-bold text-accent2 mb-2.5">
+        "Learning, Living, and Leveling Up."
+      </div>
+      <div class="text-muted text-[0.95rem] mb-5">Get in Touch</div>
+
+      <div class="flex gap-3 justify-center mb-[30px]">
+        <a
+          href="https://github.com/adarshsingh9540"
+          target="_blank"
+          class="w-11 h-11 rounded-[10px] bg-card border border-border flex items-center justify-center text-txtmain no-underline text-base hover:bg-border hover:border-accent transition-colors"
+          title="GitHub"
+        >
+          <i class="fab fa-github"></i>
+        </a>
+        <a
+          href="https://linkedin.com/in/adarshsingh9540"
+          target="_blank"
+          class="w-11 h-11 rounded-[10px] bg-card border border-border flex items-center justify-center text-txtmain no-underline text-base hover:bg-border hover:border-accent transition-colors"
+          title="LinkedIn"
+        >
+          <i class="fab fa-linkedin"></i>
+        </a>
+        <a
+          href="https://instagram.com/adarshsingh9540"
+          target="_blank"
+          class="w-11 h-11 rounded-[10px] bg-card border border-border flex items-center justify-center text-txtmain no-underline text-base hover:bg-border hover:border-accent transition-colors"
+          title="Instagram"
+        >
+          <i class="fab fa-instagram"></i>
+        </a>
+        <a
+          href="mailto:singhadarsh9540@gmail.com"
+          class="w-11 h-11 rounded-[10px] bg-card border border-border flex items-center justify-center text-txtmain no-underline text-base hover:bg-border hover:border-accent transition-colors"
+          title="Email"
+        >
+          <i class="fa fa-envelope"></i>
+        </a>
+      </div>
+
+      <a
+        href="#hero"
+        class="inline-flex items-center gap-1.5 text-muted no-underline text-sm mt-2.5 hover:text-txtmain transition-colors"
+      >
+        <i class="fa fa-arrow-up"></i> Back to Top
+      </a>
+    </section>
+
+    <!-- FLOATING DOCK -->
+    <div
+      class="fixed bottom-6 left-1/2 -translate-x-1/2 flex gap-1 items-center bg-card border border-border rounded-2xl px-4 py-2.5 z-[99] backdrop-blur-lg"
+    >
+      <a
+        href="https://linkedin.com/in/adarshsingh9540"
+        target="_blank"
+        title="LinkedIn"
+        class="w-10 h-10 rounded-[10px] flex items-center justify-center text-muted no-underline text-base hover:text-txtmain hover:bg-border transition-colors"
+      >
+        <i class="fab fa-linkedin"></i>
+      </a>
+      <a
+        href="https://github.com/adarshsingh9540"
+        target="_blank"
+        title="GitHub"
+        class="w-10 h-10 rounded-[10px] flex items-center justify-center text-muted no-underline text-base hover:text-txtmain hover:bg-border transition-colors"
+      >
+        <i class="fab fa-github"></i>
+      </a>
+      <a
+        href="https://x.com/adarshsingh9540"
+        target="_blank"
+        title="X / Twitter"
+        class="w-10 h-10 rounded-[10px] flex items-center justify-center text-muted no-underline text-base hover:text-txtmain hover:bg-border transition-colors"
+      >
+        <i class="fab fa-x-twitter"></i>
+      </a>
+      <a
+        href="mailto:singhadarsh9540@gmail.com"
+        title="Email"
+        class="w-10 h-10 rounded-[10px] flex items-center justify-center text-muted no-underline text-base hover:text-txtmain hover:bg-border transition-colors"
+      >
+        <i class="fa fa-envelope"></i>
+      </a>
+      <a
+        href="resume.pdf"
+        download="Adarsh_Singh_Resume.pdf"
+        title="Download Resume"
+        class="w-10 h-10 rounded-[10px] flex items-center justify-center text-muted no-underline text-base hover:text-txtmain hover:bg-border transition-colors"
+      >
+        <i class="fa fa-file-arrow-down"></i>
+      </a>
     </div>
-    <script src="script.js"></script>
-</body>
+
+    <script>
+      const toggle = document.getElementById("themeToggle");
+      const html = document.documentElement;
+      toggle.addEventListener("click", () => {
+        const isLight = html.classList.contains("light");
+        html.classList.toggle("dark", isLight);
+        html.classList.toggle("light", !isLight);
+        toggle.textContent = isLight ? "🌙" : "☀️";
+      });
+    </script>
+  </body>
 </html>
